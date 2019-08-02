@@ -3,24 +3,48 @@
 
 /* ***** type level selectors ***** */
 
-body {
-    background-color: rgb(228, 228, 228);
-}
 
 nav {
+    justify-self: center;
+    width: 100%;
     text-align: center;
     background-color: #57909c;
     margin-bottom: 20px;
+}
+
+nav div {
+    margin-top: 10px;
 }
 
 nav a {
     color: white;
 }
 
+nav .btn {
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+}
+
 h2 {
     margin-bottom: 20px;
 }
 
+header {
+    display: flex;
+    width: 100%;
+}
+
+footer {
+    width: 100%;
+    background-color: #57909c;
+    margin-top: 20px;
+    color: white;
+    text-align: center;
+    height: 50px;
+}
 
 /* ***** class level selectors ***** */
 .pre-scrollable {
@@ -28,6 +52,25 @@ h2 {
 }
 
 /* ***** id level selectors ***** */
+
+/*Styling the Header, Logo, and Nav*/
+#logo {
+    max-width: 250px;
+    align-self: center;
+    color: #c2453e;
+}
+
+#logoImage {
+    max-width: 120px;
+    max-height: 120;
+    margin: 10px;
+}
+
+#navContainer {
+    display: flex;
+    justify-content: center;
+
+}
 
 /*Styling the Senate Data*/
 
