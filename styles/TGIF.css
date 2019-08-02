@@ -2,6 +2,11 @@
 
 
 /* ***** type level selectors ***** */
+
+body {
+    background-color: rgb(228, 228, 228);
+}
+
 nav {
     text-align: center;
     background-color: #57909c;
@@ -26,17 +31,21 @@ h2 {
 
 /*Styling the Senate Data*/
 
-#containerTableSenateData {
+#containerTableData {
     width: 80%; 
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-#containerTableSenateData th {
+#containerTableData th {
     background-color: #152b38;
     color: rgb(238, 237, 237);
     position: sticky; 
     top: 0;
+}
+
+#containerTableData td {
+    background-color: white;
 }
 
 #pctPartyCol {
