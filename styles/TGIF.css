@@ -1,0 +1,44 @@
+/* Stylesheet for TGIF stuff */
+
+
+/* ***** type level selectors ***** */
+nav {
+    text-align: center;
+    background-color: #57909c;
+    margin-bottom: 20px;
+}
+
+nav a {
+    color: white;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+
+/* ***** class level selectors ***** */
+.pre-scrollable {
+    max-height: 600px;
+}
+
+/* ***** id level selectors ***** */
+
+/*Styling the Senate Data*/
+
+#containerTableSenateData {
+    width: 80%; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#containerTableSenateData th {
+    background-color: #152b38;
+    color: rgb(238, 237, 237);
+    position: sticky; 
+    top: 0;
+}
+
+#pctPartyCol {
+    text-align: center;
+}
