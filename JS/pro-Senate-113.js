@@ -5,8 +5,6 @@ let senateData = {
        {
           "congress": "113",
           "chamber": "Senate",
-          
-          
           "num_results": 105,
           "offset": 0,
           "members": [
