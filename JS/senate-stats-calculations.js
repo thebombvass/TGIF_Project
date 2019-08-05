@@ -43,6 +43,27 @@ function votesWithPartyCalc (array) {
     senateStats.indsVoteOnParty = ((indPcts.reduce(add))/indPcts.length).toFixed(2)
 }
 
+function heyonesecjustsettingup (array) {
+    //get the list of percent of votes with party for dems and reps//
+    let repPcts = []
+    let demPcts = []
+    let indPcts = []
+    for (i = 0; i < array.length; i++) {
+        if (array[i].party == "R") {
+            repPcts.push(array[i].votes_with_party_pct)
+          } else if (array[i].party == "D") {
+            demPcts.push(array[i].votes_with_party_pct)
+          } else {
+            indPcts.push(array[i].votes_with_party_pct)
+          }
+    }
+    //turn the array into an average, reps first then dems//
+    const add = (a,b) => a+b
+    senateStats.repsVoteOnParty = ((repPcts.reduce(add))/repPcts.length).toFixed(2)
+    senateStats.demsVoteOnParty = ((demPcts.reduce(add))/demPcts.length).toFixed(2)
+    senateStats.indsVoteOnParty = ((indPcts.reduce(add))/indPcts.length).toFixed(2)
+}
+
 //****************CALLING FUNCTIONS ****************//
 
 // functions to fill senateStats with the right numbers//
