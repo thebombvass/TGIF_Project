@@ -27,6 +27,11 @@ h2 {
 header {
     display: flex;
     width: 100%;
+    justify-content: space-between;
+}
+
+header a {
+    color: rgb(0, 115, 209);
 }
 
 footer {
@@ -69,6 +74,32 @@ footer {
 #logo {
     width: 40%;
     margin: 10px;
+}
+
+#mailUsLink {
+    align-self:flex-end;
+}
+
+#mailUsLink a {
+    margin: 10px; 
+}
+
+/*Styling the Home page*/
+#aboutUs {
+    display: flex;
+    width: 100%;
+}
+
+#aboutUs div {
+    width: 60%;
+    
+}
+
+#aboutUs img {
+    width: 30%;
+    height: auto;
+    align-self: flex-start;
+    min-width: 200px;
 }
 
 /*Styling the Senate Data*/
