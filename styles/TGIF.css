@@ -2,26 +2,18 @@
 
 
 /* ***** type level selectors ***** */
-
-
 nav {
-    justify-self: center;
-    width: 100%;
-    text-align: center;
-    background-color: #041e41;
-    margin-bottom: 20px;
+    background-color: rgb(219, 219, 219);
+    margin-bottom: 40px;
 }
 
-nav div {
-    margin-top: 10px;
+/* clicky stuff */
+a {
+    color: rgb(39, 39, 39);
 }
 
-nav a {
-    color: white;
-}
-
-nav .btn {
-    color: white;
+a:hover {
+    color: rgb(39, 39, 39);
 }
 
 ul {
@@ -39,9 +31,9 @@ header {
 
 footer {
     width: 100%;
-    background-color:#041c3a;
+    background-color:rgb(219, 219, 219);
     margin-top: 20px;
-    color: white;
+    color:rgb(39, 39, 39);
     text-align: center;
     height: 50px;
 }
@@ -50,19 +42,33 @@ footer {
 .pre-scrollable {
     max-height: 600px;
 }
+.dropdown-menu {
+    position: relative;
+    top: 38px;
+    display: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index:1;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
 
+.dropdown-menu li {
+    margin-top: 8px;
+}
 /* ***** id level selectors ***** */
 
+
 /*Styling the Header, Logo, and Nav*/
+#navWrapper {
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+}
+
 #logo {
     width: 40%;
     margin: 10px;
-}
-
-#navContainer {
-    display: flex;
-    justify-content: center;
-
 }
 
 /*Styling the Senate Data*/
@@ -74,7 +80,7 @@ footer {
 }
 
 #containerTableData th {
-    background-color: #757474;
+    background-color: #b9443c;
     color: rgb(238, 237, 237);
     position: sticky; 
     top: 0;
