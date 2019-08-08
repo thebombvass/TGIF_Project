@@ -8,7 +8,7 @@ nav {
     justify-self: center;
     width: 100%;
     text-align: center;
-    background-color: #57909c;
+    background-color: #041e41;
     margin-bottom: 20px;
 }
 
@@ -39,7 +39,7 @@ header {
 
 footer {
     width: 100%;
-    background-color: #57909c;
+    background-color:#041c3a;
     margin-top: 20px;
     color: white;
     text-align: center;
@@ -55,14 +55,7 @@ footer {
 
 /*Styling the Header, Logo, and Nav*/
 #logo {
-    max-width: 250px;
-    align-self: center;
-    color: #c2453e;
-}
-
-#logoImage {
-    max-width: 120px;
-    max-height: 120;
+    width: 40%;
     margin: 10px;
 }
 
@@ -81,7 +74,7 @@ footer {
 }
 
 #containerTableData th {
-    background-color: #152b38;
+    background-color: #757474;
     color: rgb(238, 237, 237);
     position: sticky; 
     top: 0;
