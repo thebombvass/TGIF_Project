@@ -139,3 +139,13 @@ footer {
     background-color: #b9443c;
     color: rgb(238, 237, 237);
 }
+
+#leastEngagedtable th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
+}
+
+#mostEngagedtable th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
+}

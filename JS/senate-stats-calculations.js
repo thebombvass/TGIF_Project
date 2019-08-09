@@ -59,7 +59,6 @@ function votesWithPartyCalc(array) {
   );
 }
 
-
 //get a sorted list of senators by missed votes//
 function sortByEngaged(data) {
   sortedEngagementArray = [];
@@ -77,8 +76,8 @@ function sortByEngaged(data) {
   return sortedEngagementArray;
 }
 
-//calculates the membersMostEngaged statistic using sorted list in sortByEngaged//
-function mostEngaged(sortedArray, arrayToSum) {
+//calculates the membersMostEngaged or membersLeastEngaged statistic using sorted list in sortByEngaged (reversed for least)//
+function tenPctEngaged(sortedArray, arrayToSum) {
   totalMembers = arrayToSum.reduce((a,b)=> a+b,0);
   tenPercentAmt = Math.ceil(totalMembers * 0.1);
   topten = [];
@@ -96,11 +95,11 @@ function mostEngaged(sortedArray, arrayToSum) {
       break;
     }
   }
-  senateStats.membersMostEngaged = topten
+  return topten
 }
 
-//creating the table of 'Most Engaged (Top 10% Attendance)' using membersMostEngaged stat//
-function createMostEngagedTable (array){
+//creating the table of 'Most/Least Engaged (Top/Bottom 10% Attendance)' using membersMostEngaged or membersLeastEngaged stat//
+function createEngagedTable (array){
   let resultnext=""
   for (i = 0; i < array.length; i++) {
     result = `<tr><td>${array[i].name} ${array[i].lname} </td><td class=centeredCol> ${array[i].missed_votes} </td><td class=centeredCol> ${array[i].missed_votes_pct} %</td></tr>`;
@@ -130,12 +129,23 @@ document.getElementById("indPct").innerHTML = ` ${
   senateStats.indsVoteOnParty
 } %`;
 
-//getting the top 10%//
-mostEngaged(sortByEngaged(data.results[0].members), [
+//getting the top 10% attendance//
+senateStats.membersMostEngaged = tenPctEngaged(sortByEngaged(data.results[0].members), [
   senateStats.numberOfDems,
   senateStats.numberOfReps,
   senateStats.numberOfInds
 ]);
 
 //stuff to fill 'Most Engaged (Top 10% Attendance)' table//
-document.getElementById("mostEngaged").innerHTML = createMostEngagedTable(senateStats.membersMostEngaged);
+document.getElementById("mostEngaged").innerHTML = createEngagedTable(senateStats.membersMostEngaged);
+
+//getting the bottom 10% attendance//
+senateStats.membersLeastEngaged = tenPctEngaged((sortByEngaged(data.results[0].members)).reverse(), [
+  senateStats.numberOfDems,
+  senateStats.numberOfReps,
+  senateStats.numberOfInds
+]);
+console.log(senateStats.membersLeastEngaged)
+
+//stuff to fill 'Least Engaged (Bottom 10% Attendance)' table//
+document.getElementById("leastEngaged").innerHTML = createEngagedTable(senateStats.membersLeastEngaged);
