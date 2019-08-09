@@ -60,6 +60,10 @@ footer {
 .dropdown-menu li {
     margin-top: 8px;
 }
+
+.centeredCol {
+    text-align: center;
+}
 /* ***** id level selectors ***** */
 
 
@@ -121,6 +125,17 @@ footer {
     background-color: white;
 }
 
-#pctPartyCol {
-    text-align: center;
+/*Styling the Senate at a Glance Table*/
+
+#senateAtGlance h2{
+    text-align: right;
+}
+
+#senateAtGlance{
+    align-self: center;
+}
+
+#senateAtGlance th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
 }
