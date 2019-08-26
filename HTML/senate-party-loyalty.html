@@ -43,135 +43,77 @@
             </ul>
         </nav> 
 
-        <header>            
-            <div>
-            </div>
-        </header>
         <!--Table container-->
-        <div> 
-            <h2>Party Loyalty</h2>
-            <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
-    	    
-            <h2>Senate at a glance</h2>
+        <div class="container-fluid">
+        <div class="row"> 
+            <div class="col-sm-6">
+                <h2>Party Loyalty</h2>
+                <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
+            </div>
+            <div class="col-sm-6" id="senateAtGlance">
+                <h2>Senate at a glance</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Party</th>
+                            <th>Number of Reps</th>
+                            <th>% Voted with Prty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Republican</td>
+                            <td id="repNum">--</td>
+                            <td id="repPct">--</td>
+                        </tr>
+                        <tr>
+                            <td>Democrat</td>
+                            <td id="demNum">--</td>
+                            <td id="demPct">--</td>
+                        </tr>
+                        <tr>
+                            <td>Independent</td>
+                            <td id="indNum">--</td>
+                            <td id="indPct">--</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr>
+        <div class="row">
+            <div class="col-sm-6" id="leastEngagedtable">
+            <h2>Least Loyal (Bottom 10% Attendance)</h2>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Party</th>
-                        <th>Number of Reps</th>
-                        <th>% Voted with Prty</th>
+                        <th>Name</th>
+                        <th>Number of Missed Votes</th>
+                        <th>% Missed</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Republican</td>
-                        <td id="repNum">--</td>
-                        <td id="repPct">--</td>
-                    </tr>
-                    <tr>
-                        <td>Democrat</td>
-                        <td id="demNum">--</td>
-                        <td id="demPct">--</td>
-                    </tr>
-                    <tr>
-                        <td>Independent</td>
-                        <td id="indNum">--</td>
-                        <td id="indPct">--</td>
-                    </tr>
+                <tbody id="leastEngaged">
                 </tbody>
             </table>
+            </div>
 
-            <h2>Least Loyal (Bottom 10% of Party)</h2>
-            <table>
+            <div class="col-sm-6" id="mostEngagedtable">
+            <h2>Most Loyal (Top 10% Attendance)</h2>
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Number Party Votes</th>
-                        <th>% Party Votes</th>
+                        <th>Number of Missed Votes</th>
+                        <th>% Missed</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
+                <tbody id="mostEngaged">
                 </tbody>
             </table>
-
-            <h2>Most Loyal (Top 10% of Party)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Number Party Votes</th>
-                        <th>% Party Votes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                    <tr>
-                        <td>--</td>
-                        <td>--</td>
-                        <td>--</td>
-                    </tr>
-                </tbody>
-            </table>
-
-        </div>  
+            </div>
+        </div>
+        </div>
         
         <footer>
             2016 TGIF | Rights Reserved
