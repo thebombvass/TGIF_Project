@@ -64,6 +64,15 @@ footer {
 .centeredCol {
     text-align: center;
 }
+
+.btn-text.collapsed:before {
+    content: 'read more ▼';
+    color: #004ecc;
+}
+
+.btn-text:before {
+    content: '';
+}
 /* ***** id level selectors ***** */
 
 
@@ -96,7 +105,6 @@ footer {
 
 #aboutUs div {
     width: 60%;
-    
 }
 
 #aboutUs img {
@@ -104,6 +112,10 @@ footer {
     height: auto;
     align-self: flex-start;
     min-width: 200px;
+}
+
+#readLess {
+    color: #004ecc;
 }
 
 /*Styling the Senate Data*/

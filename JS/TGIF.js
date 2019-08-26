@@ -1,5 +1,7 @@
 //Javascript file for Transparency Government in Fact project //
 
+//ability to use $ in place of get elem by id 
+function $(x) {return document.getElementById(x);} 
 
 // *********** FUNCTIONS ******************* //
 
@@ -14,6 +16,8 @@ function dataInTable(data) {
   return result;
 }
 
+
 // ********************* CALLING FUNCTIONS ****************** //
 
-document.getElementById('table').innerHTML = dataInTable (data.results[0].members)
+$('table').innerHTML = dataInTable (data.results[0].members)
+
