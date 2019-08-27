@@ -152,12 +152,22 @@ footer {
     color: rgb(238, 237, 237);
 }
 
-#leastEngagedtable th {
+#leastEngagedTable th {
     background-color: #b9443c;
     color: rgb(238, 237, 237);
 }
 
-#mostEngagedtable th {
+#mostEngagedTable th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
+}
+
+#mostLoyalTable th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
+}
+
+#leastLoyalTable th {
     background-color: #b9443c;
     color: rgb(238, 237, 237);
 }

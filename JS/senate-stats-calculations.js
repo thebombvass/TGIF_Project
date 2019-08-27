@@ -8,8 +8,8 @@ senateStats = {
   demsVoteOnParty: 0,
   repsVoteOnParty: 0,
   indsVoteOnParty: 0,
-  membersVoteAgainstParty: 0,
-  membersVoteWithParty: 0,
+  membersLeastLoyal: 0,
+  membersMostLoyal: 0,
   membersMostEngaged: 0,
   membersLeastEngaged: 0
 };
@@ -78,7 +78,6 @@ function sortByStatistic(data, statisticReported, statisticSorted) {
 
 //calculates the membersMostEngaged or membersLeastEngaged statistic using sorted list in sortByEngaged (reversed for least)//
 function tenPctCharts(sortedArray, arrayToSum) {
-  console.log(sortedArray)
   totalMembers = arrayToSum.reduce((a,b)=> a+b,0);
   tenPercentAmt = Math.ceil(totalMembers * 0.1);
   topten = [];
@@ -107,6 +106,16 @@ function createTenPctTable (array){
     resultnext += result;
     }
   return resultnext;
+}
+
+//calculate number of Party Votes and insert correct value for property in object//
+function correctNumberPartyVotes (array) {
+  for (i=0; i < array.length; i++) {
+    let totalVotes = array[i]["statisticReported"]
+    let numPartyVotes = totalVotes*(array[i]["statisticSorted"]/100)
+    array[i]["statisticReported"] = Math.round(numPartyVotes)
+    console.log(array[i])
+  }
 }
 
 
@@ -164,30 +173,29 @@ document.getElementById("leastEngaged").innerHTML = createTenPctTable(senateStat
 
 
 //getting the top 10% loyalty//
-senateStats.membersVoteWithParty = tenPctCharts((sortByStatistic(data.results[0].members, "votes_with_party_pct", "votes_with_party_pct")).reverse(), [
+senateStats.membersMostLoyal = tenPctCharts((sortByStatistic(data.results[0].members, "total_votes", "votes_with_party_pct")).reverse(), [
   senateStats.numberOfDems,
   senateStats.numberOfReps,
   senateStats.numberOfInds
 ]);
+
+correctNumberPartyVotes(senateStats.membersMostLoyal)
 
 //stuff to fill 'Most Loyal (Top 10%)' table//
 if (document.getElementById("mostLoyal")) {
-document.getElementById("mostLoyal").innerHTML = createTenPctTable(senateStats.membersVoteWithParty);
-console.log(senateStats.membersVoteWithParty)
+document.getElementById("mostLoyal").innerHTML = createTenPctTable(senateStats.membersMostLoyal);
 }
 
 //getting the bottom 10% attendance//
-senateStats.membersVoteAgainstParty = tenPctCharts(sortByStatistic(data.results[0].members, "votes_with_party_pct", "votes_with_party_pct"), [
+senateStats.membersLeastLoyal = tenPctCharts(sortByStatistic(data.results[0].members, "total_votes", "votes_with_party_pct"), [
   senateStats.numberOfDems,
   senateStats.numberOfReps,
   senateStats.numberOfInds
 ]);
 
+correctNumberPartyVotes(senateStats.membersLeastLoyal)
 
 //stuff to fill 'Least Engaged (Bottom 10% Attendance)' table//
 if (document.getElementById("leastLoyal")) {
-document.getElementById("leastLoyal").innerHTML = createTenPctTable(senateStats.membersVoteAgainstParty);
+document.getElementById("leastLoyal").innerHTML = createTenPctTable(senateStats.membersLeastLoyal);
 }
-
-
-//*Number Party Votes is member.total_votes*member.votes_with_party_pct/100
