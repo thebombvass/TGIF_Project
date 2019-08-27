@@ -114,7 +114,6 @@ function correctNumberPartyVotes (array) {
     let totalVotes = array[i]["statisticReported"]
     let numPartyVotes = totalVotes*(array[i]["statisticSorted"]/100)
     array[i]["statisticReported"] = Math.round(numPartyVotes)
-    console.log(array[i])
   }
 }
 
@@ -132,7 +131,7 @@ document.getElementById("repNum").innerHTML = senateStats.numberOfReps;
 document.getElementById("repPct").innerHTML = ` ${
   senateStats.repsVoteOnParty
 } %`;
-document.getElementById("demNum").innerHTML = senateStats.numberOfDem
+document.getElementById("demNum").innerHTML = senateStats.numberOfDems
 document.getElementById("demPct").innerHTML = ` ${
   senateStats.demsVoteOnParty
 } %`;
@@ -140,7 +139,6 @@ document.getElementById("indNum").innerHTML = senateStats.numberOfInds;
 document.getElementById("indPct").innerHTML = ` ${
   senateStats.indsVoteOnParty
 } %`;
-
 
 //*** Attendance Page***//
 
@@ -150,7 +148,6 @@ senateStats.membersMostEngaged = tenPctCharts(sortByStatistic(data.results[0].me
   senateStats.numberOfReps,
   senateStats.numberOfInds
 ]);
-
 
 //stuff to fill 'Most Engaged (Top 10% Attendance)' table//
 if (document.getElementById("mostEngaged")) {
@@ -178,7 +175,7 @@ senateStats.membersMostLoyal = tenPctCharts((sortByStatistic(data.results[0].mem
   senateStats.numberOfReps,
   senateStats.numberOfInds
 ]);
-
+//filling in 'Number of Party Votes' since it has to be calculated separately 
 correctNumberPartyVotes(senateStats.membersMostLoyal)
 
 //stuff to fill 'Most Loyal (Top 10%)' table//
@@ -192,7 +189,7 @@ senateStats.membersLeastLoyal = tenPctCharts(sortByStatistic(data.results[0].mem
   senateStats.numberOfReps,
   senateStats.numberOfInds
 ]);
-
+//filling in 'Number of Party Votes' since it has to be calculated separately 
 correctNumberPartyVotes(senateStats.membersLeastLoyal)
 
 //stuff to fill 'Least Engaged (Bottom 10% Attendance)' table//

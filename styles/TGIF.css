@@ -73,6 +73,11 @@ footer {
 .btn-text:before {
     content: '';
 }
+
+/* DELETE or ALTER THIS FOR PROD */
+.houseText {
+    background-color: #de9792
+}
 /* ***** id level selectors ***** */
 
 
@@ -139,15 +144,15 @@ footer {
 
 /*Styling the Senate at a Glance Table*/
 
-#senateAtGlance h2{
+#atGlance h2{
     text-align: right;
 }
 
-#senateAtGlance{
+#atGlance{
     align-self: center;
 }
 
-#senateAtGlance th {
+#atGlance th {
     background-color: #b9443c;
     color: rgb(238, 237, 237);
 }
