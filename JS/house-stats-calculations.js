@@ -54,9 +54,7 @@ houseStats = {
     houseStats.demsVoteOnParty = (demPcts.reduce(add) / demPcts.length).toFixed(
       2
     );
-    houseStats.indsVoteOnParty = (indPcts.reduce(add) / indPcts.length).toFixed(
-      2
-    );
+    houseStats.indsVoteOnParty = (indPcts>0 ? (indPcts.reduce(add) / indPcts.length).toFixed(2) : 0);
   }
   
   //get a sorted list of congressmen by missed votes//
