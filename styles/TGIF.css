@@ -126,9 +126,7 @@ footer {
 /*Styling the Senate Data*/
 
 #containerTableData {
-    width: 80%; 
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 #containerTableData th {
@@ -140,6 +138,11 @@ footer {
 
 #containerTableData td {
     background-color: white;
+}
+
+#filters {
+    margin-top: 20px;
+    font-size: 14px;
 }
 
 /*Styling the Senate at a Glance Table*/
