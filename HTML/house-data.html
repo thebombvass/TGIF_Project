@@ -52,9 +52,33 @@
             <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
             <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
             </div>   
+
+            <div class="row">
+                <span class="col-sm-2"></span>
+                <div class="container-fluid col-sm-8" id="filters">
+                <span>Filter results: </span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkRep" checked>
+                    <label class="form-check-label" for="inlineCheckbox1">Republicans </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkDem" checked>
+                    <label class="form-check-label" for="inlineCheckbox2">Democrats</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkInd" checked>
+                    <label class="form-check-label" for="inlineCheckbox3">Independents</label>
+                </div>
+                </div>
+                <span class="col-sm-2"></span>
+            </div>
             
-            <div class="container-fluid pre-scrollable" id="containerTableData">
-                <table id="table" class="table"></table>
+            <div class="row">
+                <span class="col-sm-2"></span>
+                <div class="container-fluid pre-scrollable col-sm-8" id="containerTableData">
+                    <table id="table" class="table"></table>
+                </div>
+                <span class="col-sm-2"></span>
             </div>
         </div>
 
