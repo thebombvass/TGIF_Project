@@ -9,16 +9,23 @@ function dataInTable(data) {
   let result =
     "<thead><th> First Name </th><th> Middle Name </th><th> Last Name </th><th> Party </th><th> State </th><th> Percentage of Votes with Party</th></thead><tbody>";
   let resultnext;
-    for (i = 0; i < data.length; i++) {
-        resultnext = `<tr class="persondata ${data[i].state} ${data[i].party}"><td><a href="${data[i].url}"> ${
-          data[i].first_name
-        }</a></td><td> ${data[i].middle_name || ""} </td><td> ${
-          data[i].last_name
-        } </td><td>${data[i].party=="R" ? "Republican" : (data[i].party=="D" ? "Democrat": "Independent")}</td><td> ${data[i].state} </td><td class=centeredCol> ${
-          data[i].votes_with_party_pct
-        } %</td></tr>`;
-      result += resultnext;
-    }
+  for (i = 0; i < data.length; i++) {
+    resultnext = `<tr class="persondata ${data[i].state} ${
+      data[i].party
+    }"><td><a href="${data[i].url}"> ${data[i].first_name}</a></td><td> ${data[
+      i
+    ].middle_name || ""} </td><td> ${data[i].last_name} </td><td>${
+      data[i].party == "R"
+        ? "Republican"
+        : data[i].party == "D"
+        ? "Democrat"
+        : "Independent"
+    }</td><td> ${data[i].state} </td><td class=centeredCol> ${
+      data[i].votes_with_party_pct
+    } %</td></tr>`;
+    result += resultnext;
+  }
+  result += `<tr id="emptyMessage" hidden><td colspan="6">Oops! Your search displayed no results. Try adjusting the filters.</td></tr></tbody>`;
   return result;
 }
 
@@ -27,61 +34,192 @@ function dataInTable(data) {
 // the value set to the dropdown. This function also prints a message if no results are produced by the combination of filters you chose
 function filterResults(className, state) {
   //creating some variables to make things easier
-  let people=document.getElementsByClassName(className)
-  let Rcheck = document.getElementById("checkRep").checked
-  let Dcheck = document.getElementById("checkDem").checked
-  let Icheck = document.getElementById("checkInd").checked
-  console.log("Rcheck=" + Rcheck + " Dcheck=" + Dcheck + " Icheck=" + Icheck + " state="+state)
+  let people = document.getElementsByClassName(className);
+  let Rcheck = document.getElementById("checkRep").checked;
+  let Dcheck = document.getElementById("checkDem").checked;
+  let Icheck = document.getElementById("checkInd").checked;
   // state ="All" is a unique circumstance in which you can display anyone. Requires different logic a little so
   // we handle this first, then logic for getting list of people for the state necessary
   if (state == "All") {
-    for (i=0;i<people.length;i++) {
-      people[i].hidden = false
+    for (i = 0; i < people.length; i++) {
+      people[i].hidden = false;
     }
   } else {
-    for (i=0;i<people.length;i++) {
+    for (i = 0; i < people.length; i++) {
       if (people[i].classList[1] == state) {
-        people[i].hidden = false
+        people[i].hidden = false;
       } else {
-        people[i].hidden = true
+        people[i].hidden = true;
       }
     }
   }
   // if any of the boxes are NOT checked, remove those people
   if (Rcheck == false) {
-    for (i=0;i<people.length;i++) {
-      if (people[i].classList[2]=="R") {
-        people[i].hidden = true
+    for (i = 0; i < people.length; i++) {
+      if (people[i].classList[2] == "R") {
+        people[i].hidden = true;
       }
     }
   }
   if (Dcheck == false) {
-    for (i=0;i<people.length;i++) {
-      if (people[i].classList[2]=="D") {
-        people[i].hidden = true
+    for (i = 0; i < people.length; i++) {
+      if (people[i].classList[2] == "D") {
+        people[i].hidden = true;
       }
     }
   }
   if (Icheck == false) {
-    for (i=0;i<people.length;i++) {
-      if (people[i].classList[2]=="I") {
-        people[i].hidden = true
+    for (i = 0; i < people.length; i++) {
+      if (people[i].classList[2] == "I") {
+        people[i].hidden = true;
       }
     }
   }
-  // insert message check here
+  // if there are no results produced by this filter combination, add an alert message
+  let notHiddenCounter = 0
+  for(i = 0; i < people.length; i++) {
+    if (people[i].hidden == false) {
+      notHiddenCounter += 1
+    }
+  }
+  if (notHiddenCounter == 0) {
+    document.getElementById("emptyMessage").hidden = false
+  } else {
+    document.getElementById("emptyMessage").hidden = true
+  }
 }
 
-// function create sorted list of states for dropdown filter. adds class 'stateChosen' so that you can call these states later using 
+// function create sorted list of states for dropdown filter. adds class 'stateChosen' so that you can call these states later using
 // getElementsByClassName
 function createStatesDropDown() {
-  let statesByName = ["All","Alaska","Alabama","Arkansas","Arizona","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Iowa","Idaho","Illinois","Indiana","Kansas","Kentucky","Louisiana","Massachusetts","Maryland","Maine","Michigan","Minnesota","Missouri","Mississippi","Montana","North Carolina","North Dakota","Nebraska","New Hampshire","New Jersey","New Mexico","Nevada","New York","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Virginia","Vermont","Washington","Wisconsin","West Virginia","Wyoming"]
-  let statesByAbbrev = ["All", "AK","AL","AR","AZ","CA","CO","CT","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY"]
-  result = ""
-  for (i=0;i<statesByName.length;i++) {
-    result += `<a class="dropdown-item stateChosen" id="${statesByAbbrev[i]}">${statesByName[i]}</a>`
+  let statesByName = [
+    "All",
+    "Alaska",
+    "Alabama",
+    "Arkansas",
+    "Arizona",
+    "California",
+    "Colorado",
+    "Connecticut",
+    "Delaware",
+    "Florida",
+    "Georgia",
+    "Hawaii",
+    "Iowa",
+    "Idaho",
+    "Illinois",
+    "Indiana",
+    "Kansas",
+    "Kentucky",
+    "Louisiana",
+    "Massachusetts",
+    "Maryland",
+    "Maine",
+    "Michigan",
+    "Minnesota",
+    "Missouri",
+    "Mississippi",
+    "Montana",
+    "North Carolina",
+    "North Dakota",
+    "Nebraska",
+    "New Hampshire",
+    "New Jersey",
+    "New Mexico",
+    "Nevada",
+    "New York",
+    "Ohio",
+    "Oklahoma",
+    "Oregon",
+    "Pennsylvania",
+    "Rhode Island",
+    "South Carolina",
+    "South Dakota",
+    "Tennessee",
+    "Texas",
+    "Utah",
+    "Virginia",
+    "Vermont",
+    "Washington",
+    "Wisconsin",
+    "West Virginia",
+    "Wyoming"
+  ];
+  let statesByAbbrev = [
+    "All",
+    "AK",
+    "AL",
+    "AR",
+    "AZ",
+    "CA",
+    "CO",
+    "CT",
+    "DE",
+    "FL",
+    "GA",
+    "HI",
+    "IA",
+    "ID",
+    "IL",
+    "IN",
+    "KS",
+    "KY",
+    "LA",
+    "MA",
+    "MD",
+    "ME",
+    "MI",
+    "MN",
+    "MO",
+    "MS",
+    "MT",
+    "NC",
+    "ND",
+    "NE",
+    "NH",
+    "NJ",
+    "NM",
+    "NV",
+    "NY",
+    "OH",
+    "OK",
+    "OR",
+    "PA",
+    "RI",
+    "SC",
+    "SD",
+    "TN",
+    "TX",
+    "UT",
+    "VA",
+    "VT",
+    "WA",
+    "WI",
+    "WV",
+    "WY"
+  ];
+  result = "";
+  for (i = 0; i < statesByName.length; i++) {
+    result += `<a class="dropdown-item stateChosen" id="${statesByAbbrev[i]}">${
+      statesByName[i]
+    }</a>`;
   }
-  return result
+  return result;
+}
+
+// function to unselect 'Select All' checkbox if one of the checkboxes
+// is not selected
+function selectAllResponse() {
+  let selectAll = document.getElementById("checkAll");
+  if (document.getElementById("checkRep").checked == false) {
+    selectAll.checked = false;
+  } else if (document.getElementById("checkDem").checked == false) {
+    selectAll.checked = false;
+  } else if (document.getElementById("checkInd").checked == false) {
+    selectAll.checked = false;
+  } else {
+    selectAll.checked = true;
+  }
 }
 
 // ********************************************** CALLING FUNCTIONS **************************************** //
@@ -92,36 +230,49 @@ document.getElementById("table").innerHTML = dataInTable(
 );
 
 // creating the dropdown for states //
-document.getElementById("stateDropDown").innerHTML = createStatesDropDown()
+document.getElementById("stateDropDown").innerHTML = createStatesDropDown();
 
 // filtering for republicans when rep box is checked//
 document.getElementById("checkRep").addEventListener("click", function() {
-  let state = document.getElementById("stateDropDownBtn").value
-  filterResults("persondata", state)
+  let state = document.getElementById("stateDropDownBtn").value;
+  selectAllResponse();
+  filterResults("persondata", state);
 });
 
 // filtering for democrats when dem box is checked. Uses 'persondata' class created in dataIntable()//
 document.getElementById("checkDem").addEventListener("click", function() {
-  let state = document.getElementById("stateDropDownBtn").value
-  filterResults("persondata", state)
+  let state = document.getElementById("stateDropDownBtn").value;
+  selectAllResponse();
+  filterResults("persondata", state);
 });
 
 // filtering for independents when ind box is checked. Uses 'persondata' class created in dataIntable()//
 document.getElementById("checkInd").addEventListener("click", function() {
-  let state = document.getElementById("stateDropDownBtn").value
-  filterResults("persondata", state)
+  let state = document.getElementById("stateDropDownBtn").value;
+  selectAllResponse();
+  filterResults("persondata", state);
 });
 
 // when a state is chose from the dropdown, filter for that state and set the value of dropdown. Uses 'persondata'
 // class created in dataIntable() and 'stateChosen' class created in createStatesDropDown(). Also changes the label of dropdown to
 // reflect the state that was last clicked/is being filtered for
-let stateChosen = document.getElementsByClassName("stateChosen")
+let stateChosen = document.getElementsByClassName("stateChosen");
 Array.from(stateChosen).forEach(function(element) {
-  element.addEventListener("click", function () {
-    document.getElementById("stateDropDownBtn").value = `${element.id}`
-    document.getElementById("stateDropDownBtn").innerHTML = `State: ${element.id}`
-    filterResults("persondata", element.id)
+  element.addEventListener("click", function() {
+    document.getElementById("stateDropDownBtn").value = `${element.id}`;
+    document.getElementById("stateDropDownBtn").innerHTML = `State: ${
+      element.id
+    }`;
+    filterResults("persondata", element.id);
   });
 });
 
 
+// turn on select all box
+document.getElementById("checkAll").addEventListener("click", function() {
+  document.getElementById("checkRep").checked = true
+  document.getElementById("checkDem").checked = true
+  document.getElementById("checkInd").checked = true
+  console.log()
+  filterResults("persondata", document.getElementById("stateDropDownBtn").value)
+});

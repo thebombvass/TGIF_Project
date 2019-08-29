@@ -183,3 +183,9 @@ footer {
     background-color: #b9443c;
     color: rgb(238, 237, 237);
 }
+
+#emptyMessage {
+    text-align: center;
+    color:  #b9443c;
+    font-size: 1.2em;
+}

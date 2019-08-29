@@ -69,6 +69,7 @@ function sortByStatistic(data, statisticReported, statisticSorted) {
       sortedArray.push({
         name: data[i].first_name,
         lname: data[i].last_name,
+        url: data[i].url,
         statisticReported: data[i][statisticReported],
         statisticSorted: data[i][statisticSorted]
       })
@@ -111,7 +112,7 @@ function tenPctCharts(sortedArray, arrayToSum) {
 function createTenPctTable (array){
   let resultnext=""
   for (i = 0; i < array.length; i++) {
-    result = `<tr><td>${array[i].name} ${array[i].lname} </td><td class=centeredCol> ${array[i]["statisticReported"]} </td><td class=centeredCol> ${array[i]["statisticSorted"]} %</td></tr>`;
+    result = `<tr><td> <a href=${array[i].url}>${array[i].name} ${array[i].lname}</a></td><td class=centeredCol> ${array[i]["statisticReported"]} </td><td class=centeredCol> ${array[i]["statisticSorted"]} %</td></tr>`;
     resultnext += result;
     }
   return resultnext;
