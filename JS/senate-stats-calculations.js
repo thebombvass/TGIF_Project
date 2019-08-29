@@ -55,9 +55,7 @@ function votesWithPartyCalc(array) {
   senateStats.demsVoteOnParty = (demPcts.reduce(add) / demPcts.length).toFixed(
     2
   );
-  senateStats.indsVoteOnParty = (indPcts.reduce(add) / indPcts.length).toFixed(
-    2
-  );
+  senateStats.indsVoteOnParty = (indPcts>0 ? (indPcts.reduce(add) / indPcts.length).toFixed(2) : 0);
 }
 
 // Produces a sorted list of Senators by the 'statisticSorted'. Takes parameters 'data' for the JSON data 

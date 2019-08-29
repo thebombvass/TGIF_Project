@@ -1,7 +1,7 @@
 //statistics for house//
 
 // creating statistics object for 113th Senate. The statistics calculated are saved here //
-houseStats = {
+senateStats = {
     numberOfDems: 0,
     numberOfReps: 0,
     numberOfInds: 0,
@@ -23,11 +23,11 @@ houseStats = {
   function numberOfMembersCalc(array) {
     for (i = 0; i < array.length; i++) {
       if (array[i].party == "R") {
-        houseStats.numberOfReps += 1;
+        senateStats.numberOfReps += 1;
       } else if (array[i].party == "D") {
-        houseStats.numberOfDems += 1;
+        senateStats.numberOfDems += 1;
       } else if (array[i].party == "I") {
-        houseStats.numberOfInds += 1;
+        senateStats.numberOfInds += 1;
       }
     }
   }
@@ -49,13 +49,13 @@ houseStats = {
     }
   // turn the list of percentages into an average percent//
     const add = (a, b) => a + b;
-    houseStats.repsVoteOnParty = (repPcts.reduce(add) / repPcts.length).toFixed(
+    senateStats.repsVoteOnParty = (repPcts.reduce(add) / repPcts.length).toFixed(
       2
     );
-    houseStats.demsVoteOnParty = (demPcts.reduce(add) / demPcts.length).toFixed(
+    senateStats.demsVoteOnParty = (demPcts.reduce(add) / demPcts.length).toFixed(
       2
     );
-    houseStats.indsVoteOnParty = (indPcts>0 ? (indPcts.reduce(add) / indPcts.length).toFixed(2) : 0);
+    senateStats.indsVoteOnParty = (indPcts>0 ? (indPcts.reduce(add) / indPcts.length).toFixed(2) : 0);
   }
   
 // Produces a sorted list of Senators by the 'statisticSorted'. Takes parameters 'data' for the JSON data 
@@ -139,39 +139,39 @@ function correctNumberPartyVotes (array) {
   votesWithPartyCalc(data.results[0].members);
   
 // filling 'senate at a glance' table with correct numbers from senateStats
-  document.getElementById("repNum").innerHTML = houseStats.numberOfReps;
+  document.getElementById("repNum").innerHTML = senateStats.numberOfReps;
   document.getElementById("repPct").innerHTML = ` ${
-    houseStats.repsVoteOnParty
+    senateStats.repsVoteOnParty
   } %`;
-  document.getElementById("demNum").innerHTML = houseStats.numberOfDems
+  document.getElementById("demNum").innerHTML = senateStats.numberOfDems
   document.getElementById("demPct").innerHTML = ` ${
-    houseStats.demsVoteOnParty
+    senateStats.demsVoteOnParty
   } %`;
-  document.getElementById("indNum").innerHTML = houseStats.numberOfInds;
+  document.getElementById("indNum").innerHTML = senateStats.numberOfInds;
   document.getElementById("indPct").innerHTML = ` ${
-    houseStats.indsVoteOnParty
+    senateStats.indsVoteOnParty
   } %`;
   
 //--------------- Attendance Page ---------------//
 
 // calling tenPctCharts() to fill membersMostEngaged with the correct information
-  houseStats.membersMostEngaged = tenPctCharts(sortByStatistic(data.results[0].members, "missed_votes", "missed_votes_pct"), [
-    houseStats.numberOfDems,
-    houseStats.numberOfReps,
-    houseStats.numberOfInds
+senateStats.membersMostEngaged = tenPctCharts(sortByStatistic(data.results[0].members, "missed_votes", "missed_votes_pct"), [
+  senateStats.numberOfDems,
+  senateStats.numberOfReps,
+  senateStats.numberOfInds
   ]);
   
 // filling 'Most Engaged (Top 10% Attendance)' table with membersMostEngaged statistic and createTenPctTable() function
   if (document.getElementById("mostEngaged")) {
-  document.getElementById("mostEngaged").innerHTML = createTenPctTable(houseStats.membersMostEngaged);
+  document.getElementById("mostEngaged").innerHTML = createTenPctTable(senateStats.membersMostEngaged);
   }
   
 // calling tenPctCharts() to fill membersLeastEngaged with the correct information
 // Note -- this one uses reversed list
-  houseStats.membersLeastEngaged = tenPctCharts((sortByStatistic(data.results[0].members, "missed_votes", "missed_votes_pct")).reverse(), [
-    houseStats.numberOfDems,
-    houseStats.numberOfReps,
-    houseStats.numberOfInds
+senateStats.membersLeastEngaged = tenPctCharts((sortByStatistic(data.results[0].members, "missed_votes", "missed_votes_pct")).reverse(), [
+  senateStats.numberOfDems,
+  senateStats.numberOfReps,
+  senateStats.numberOfInds
   ]);
   
 // filling 'Least Engaged (Bottom 10% Attendance)' table with membersLeastEngaged statistic and createTenPctTable() function  if (document.getElementById("leastEngaged")) {
@@ -183,32 +183,32 @@ function correctNumberPartyVotes (array) {
   
 // calling tenPctCharts() to fill membersMostLoyal with the correct information
 // Note -- this one uses reversed list
-  houseStats.membersMostLoyal = tenPctCharts((sortByStatistic(data.results[0].members, "total_votes", "votes_with_party_pct")).reverse(), [
-    houseStats.numberOfDems,
-    houseStats.numberOfReps,
-    houseStats.numberOfInds
+senateStats.membersMostLoyal = tenPctCharts((sortByStatistic(data.results[0].members, "total_votes", "votes_with_party_pct")).reverse(), [
+  senateStats.numberOfDems,
+  senateStats.numberOfReps,
+  senateStats.numberOfInds
   ]);
 // calling correctNumberPartyVotes to change 'statisticReported' for 'Number of Party Votes' since it has 
 // to be calculated separately 
-  correctNumberPartyVotes(houseStats.membersMostLoyal)
+  correctNumberPartyVotes(senateStats.membersMostLoyal)
   
 // filling 'Most Loyal (Top 10% )' table with membersMostLoyal statistic and createTenPctTable() function
   if (document.getElementById("mostLoyal")) {
-  document.getElementById("mostLoyal").innerHTML = createTenPctTable(houseStats.membersMostLoyal);
+  document.getElementById("mostLoyal").innerHTML = createTenPctTable(senateStats.membersMostLoyal);
   }
   
 // calling tenPctCharts() to fill membersLeastLoyal with the correct information
-  houseStats.membersLeastLoyal = tenPctCharts(sortByStatistic(data.results[0].members, "total_votes", "votes_with_party_pct"), [
-    houseStats.numberOfDems,
-    houseStats.numberOfReps,
-    houseStats.numberOfInds
+senateStats.membersLeastLoyal = tenPctCharts(sortByStatistic(data.results[0].members, "total_votes", "votes_with_party_pct"), [
+  senateStats.numberOfDems,
+  senateStats.numberOfReps,
+  senateStats.numberOfInds
   ]);
 // calling membersLeastLoyal to change 'statisticReported' for 'Number of Party Votes' since it has 
 // to be calculated separately 
-  correctNumberPartyVotes(houseStats.membersLeastLoyal)
+  correctNumberPartyVotes(senateStats.membersLeastLoyal)
   
 // calling tenPctCharts() to fill membersLeastLoyal with the correct information
   if (document.getElementById("leastLoyal")) {
-  document.getElementById("leastLoyal").innerHTML = createTenPctTable(houseStats.membersLeastLoyal);
+  document.getElementById("leastLoyal").innerHTML = createTenPctTable(senateStats.membersLeastLoyal);
   }
   
