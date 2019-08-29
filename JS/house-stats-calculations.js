@@ -175,9 +175,9 @@ function correctNumberPartyVotes (array) {
   ]);
   
 // filling 'Least Engaged (Bottom 10% Attendance)' table with membersLeastEngaged statistic and createTenPctTable() function  if (document.getElementById("leastEngaged")) {
-  document.getElementById("leastEngaged").innerHTML = createTenPctTable(houseStats.membersLeastEngaged);
-  }
-  
+  if (document.getElementById("leastEngaged")) {
+    document.getElementById("leastEngaged").innerHTML = createTenPctTable(senateStats.membersLeastEngaged);
+    }  
 
 //--------------- Loyalty Page ---------------//
   
