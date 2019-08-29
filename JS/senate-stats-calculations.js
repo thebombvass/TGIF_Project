@@ -183,7 +183,7 @@ if (document.getElementById("mostLoyal")) {
 document.getElementById("mostLoyal").innerHTML = createTenPctTable(senateStats.membersMostLoyal);
 }
 
-//getting the bottom 10% attendance//
+//getting the bottom 10% loyalty//
 senateStats.membersLeastLoyal = tenPctCharts(sortByStatistic(data.results[0].members, "total_votes", "votes_with_party_pct"), [
   senateStats.numberOfDems,
   senateStats.numberOfReps,

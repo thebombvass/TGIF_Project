@@ -145,6 +145,10 @@ footer {
     font-size: 14px;
 }
 
+#dropdownwrap {
+    display: inline;
+}
+
 /*Styling the Senate at a Glance Table*/
 
 #atGlance h2{
