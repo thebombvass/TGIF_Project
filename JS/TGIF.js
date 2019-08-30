@@ -223,56 +223,84 @@ function selectAllResponse() {
 }
 
 // ********************************************** CALLING FUNCTIONS **************************************** //
+document.getElementById("table").innerHTML='<div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>'
 
-// filling the Congress113 tables for senate and house//
-document.getElementById("table").innerHTML = dataInTable(
-  data.results[0].members
-);
 
 // creating the dropdown for states //
 document.getElementById("stateDropDown").innerHTML = createStatesDropDown();
 
-// filtering for republicans when rep box is checked//
-document.getElementById("checkRep").addEventListener("click", function() {
-  let state = document.getElementById("stateDropDownBtn").value;
-  selectAllResponse();
-  filterResults("persondata", state);
-});
+// setting URL for where the data will come from depending on which page is being loaded
+let url = "";
+if (document.getElementById("title").innerHTML=="TGIF House Data") {
+  console.log("yes")
+  url = "https://api.propublica.org/congress/v1/113/house/members.json"
+} else {
+  console.log('no')
+  url = "https://api.propublica.org/congress/v1/113/senate/members.json"
+}
 
-// filtering for democrats when dem box is checked. Uses 'persondata' class created in dataIntable()//
-document.getElementById("checkDem").addEventListener("click", function() {
-  let state = document.getElementById("stateDropDownBtn").value;
-  selectAllResponse();
-  filterResults("persondata", state);
-});
+// getting the data dynamically/asychronously using AJAX
+fetch(url, {
+  method: "get",
+  headers: {
+    "X-API-Key" : "9PxBtcchx3OZS4CHGYPU8VD0nG68lNGgic8kiU73"
+  }
+}).then(response => {
+  if (response.status !== 200) {
+    console.log("Looks like there was an issue. Status is "+ response.status);
+    return;
+  } 
+  response.json().then(data => {
+    console.log("ProPublica Response is good!")
+    console.log(data.results[0].members)
+    // filling the Congress113 tables for senate and house
+    document.getElementById("table").innerHTML = dataInTable(
+      data.results[0].members
+    );
 
-// filtering for independents when ind box is checked. Uses 'persondata' class created in dataIntable()//
-document.getElementById("checkInd").addEventListener("click", function() {
-  let state = document.getElementById("stateDropDownBtn").value;
-  selectAllResponse();
-  filterResults("persondata", state);
-});
+    // filtering for republicans when rep box is checked. Must be done after load
+    document.getElementById("checkRep").addEventListener("click", function() {
+      let state = document.getElementById("stateDropDownBtn").value;
+      selectAllResponse();
+      filterResults("persondata", state);
+    });
+    // filtering for democrats when dem box is checked. Uses 'persondata' class created in dataIntable()//
+    document.getElementById("checkDem").addEventListener("click", function() {
+      let state = document.getElementById("stateDropDownBtn").value;
+      selectAllResponse();
+      filterResults("persondata", state);
+    });
 
-// when a state is chose from the dropdown, filter for that state and set the value of dropdown. Uses 'persondata'
-// class created in dataIntable() and 'stateChosen' class created in createStatesDropDown(). Also changes the label of dropdown to
-// reflect the state that was last clicked/is being filtered for
-let stateChosen = document.getElementsByClassName("stateChosen");
-Array.from(stateChosen).forEach(function(element) {
-  element.addEventListener("click", function() {
-    document.getElementById("stateDropDownBtn").value = `${element.id}`;
-    document.getElementById("stateDropDownBtn").innerHTML = `State: ${
-      element.id
-    }`;
-    filterResults("persondata", element.id);
-  });
-});
+    // filtering for independents when ind box is checked. Uses 'persondata' class created in dataIntable()//
+    document.getElementById("checkInd").addEventListener("click", function() {
+      let state = document.getElementById("stateDropDownBtn").value;
+      selectAllResponse();
+      filterResults("persondata", state);
+    });
 
+    // when a state is chose from the dropdown, filter for that state and set the value of dropdown. Uses 'persondata'
+    // class created in dataIntable() and 'stateChosen' class created in createStatesDropDown(). Also changes the label of dropdown to
+    // reflect the state that was last clicked/is being filtered for
+    let stateChosen = document.getElementsByClassName("stateChosen");
+    Array.from(stateChosen).forEach(function(element) {
+      element.addEventListener("click", function() {
+        document.getElementById("stateDropDownBtn").value = `${element.id}`;
+        document.getElementById("stateDropDownBtn").innerHTML = `State: ${
+          element.id
+        }`;
+        filterResults("persondata", element.id);
+      });
+    });
 
-// turn on select all box
-document.getElementById("checkAll").addEventListener("click", function() {
-  document.getElementById("checkRep").checked = true
-  document.getElementById("checkDem").checked = true
-  document.getElementById("checkInd").checked = true
-  console.log()
-  filterResults("persondata", document.getElementById("stateDropDownBtn").value)
-});
+    // turn on select all box
+    document.getElementById("checkAll").addEventListener("click", function() {
+      document.getElementById("checkRep").checked = true;
+      document.getElementById("checkDem").checked = true;
+      document.getElementById("checkInd").checked = true;
+      filterResults("persondata", document.getElementById("stateDropDownBtn").value);
+    });
+  })
+  .catch(err =>{
+    console.log("Fetch Error :-S", err)
+  })
+})

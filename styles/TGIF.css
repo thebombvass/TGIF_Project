@@ -74,10 +74,6 @@ footer {
     content: '';
 }
 
-/* DELETE or ALTER THIS FOR PROD */
-.houseText {
-    background-color: #de9792
-}
 /* ***** id level selectors ***** */
 
 
@@ -149,6 +145,12 @@ footer {
     display: inline;
 }
 
+#emptyMessage {
+    text-align: center;
+    color:  #b9443c;
+    font-size: 1.2em;
+}
+
 /*Styling the Senate at a Glance Table*/
 
 #atGlance h2{
@@ -182,10 +184,4 @@ footer {
 #leastLoyalTable th {
     background-color: #b9443c;
     color: rgb(238, 237, 237);
-}
-
-#emptyMessage {
-    text-align: center;
-    color:  #b9443c;
-    font-size: 1.2em;
 }
