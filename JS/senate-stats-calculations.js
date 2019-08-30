@@ -133,86 +133,128 @@ function correctNumberPartyVotes (array) {
 //************************************ CALLING FUNCTIONS ***********************************//
 
 
-//------------ Congress 113 Page ---------------//
+// setting URL for where the data will come from depending on which page is being loaded
+let url = "";
+if (document.getElementById("title").innerHTML.includes("House")) {
+  console.log("yes")
+  url = "https://api.propublica.org/congress/v1/113/house/members.json"
+} else {
+  console.log('no')
+  url = "https://api.propublica.org/congress/v1/113/senate/members.json"
+}
 
-// calling functions which will fill numberOfDems, numberOfReps, numberOfInds, repsVoteOnParty, 
-// demsVoteOnParty, indsVoteOnParty with correct answer to be used in 'senate at a glance' table
-numberOfMembersCalc(data.results[0].members);
-votesWithPartyCalc(data.results[0].members);
-
-// filling 'senate at a glance' table with correct numbers from senateStats
-document.getElementById("repNum").innerHTML = senateStats.numberOfReps;
-document.getElementById("repPct").innerHTML = ` ${
-  senateStats.repsVoteOnParty
-} %`;
-document.getElementById("demNum").innerHTML = senateStats.numberOfDems
-document.getElementById("demPct").innerHTML = ` ${
-  senateStats.demsVoteOnParty
-} %`;
-document.getElementById("indNum").innerHTML = senateStats.numberOfInds;
-document.getElementById("indPct").innerHTML = ` ${
-  senateStats.indsVoteOnParty
-} %`;
-
-
-//--------------- Attendance Page ---------------//
-
-// calling tenPctCharts() to fill membersMostEngaged with the correct information
-senateStats.membersMostEngaged = tenPctCharts(sortByStatistic(data.results[0].members, "missed_votes", "missed_votes_pct"), [
-  senateStats.numberOfDems,
-  senateStats.numberOfReps,
-  senateStats.numberOfInds
-]);
-
-// filling 'Most Engaged (Top 10% Attendance)' table with membersMostEngaged statistic and createTenPctTable() function
 if (document.getElementById("mostEngaged")) {
-document.getElementById("mostEngaged").innerHTML = createTenPctTable(senateStats.membersMostEngaged);
+  document.getElementById("mostEngaged").innerHTML = `<tr><td colspan="3"><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div></td></tr>`
 }
-
-// calling tenPctCharts() to fill membersLeastEngaged with the correct information
-// Note -- this one uses reversed list
-senateStats.membersLeastEngaged = tenPctCharts((sortByStatistic(data.results[0].members, "missed_votes", "missed_votes_pct")).reverse(), [
-  senateStats.numberOfDems,
-  senateStats.numberOfReps,
-  senateStats.numberOfInds
-]);
-
-// filling 'Least Engaged (Bottom 10% Attendance)' table with membersLeastEngaged statistic and createTenPctTable() function
 if (document.getElementById("leastEngaged")) {
-document.getElementById("leastEngaged").innerHTML = createTenPctTable(senateStats.membersLeastEngaged);
+  document.getElementById("leastEngaged").innerHTML = `<tr><td colspan="3"><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div></td></tr>`
 }
-
-
-//--------------- Loyalty Page ---------------//
-
-
-// calling tenPctCharts() to fill membersMostLoyal with the correct information
-// Note -- this one uses reversed list
-senateStats.membersMostLoyal = tenPctCharts((sortByStatistic(data.results[0].members, "total_votes", "votes_with_party_pct")).reverse(), [
-  senateStats.numberOfDems,
-  senateStats.numberOfReps,
-  senateStats.numberOfInds
-]);
-// calling correctNumberPartyVotes to change 'statisticReported' for 'Number of Party Votes' since it has 
-// to be calculated separately 
-correctNumberPartyVotes(senateStats.membersMostLoyal)
-
-// filling 'Most Loyal (Top 10% )' table with membersMostLoyal statistic and createTenPctTable() function
 if (document.getElementById("mostLoyal")) {
-document.getElementById("mostLoyal").innerHTML = createTenPctTable(senateStats.membersMostLoyal);
+  document.getElementById("mostLoyal").innerHTML = `<tr><td colspan="3"><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div></td></tr>`
 }
-
-// calling tenPctCharts() to fill membersLeastLoyal with the correct information
-senateStats.membersLeastLoyal = tenPctCharts(sortByStatistic(data.results[0].members, "total_votes", "votes_with_party_pct"), [
-  senateStats.numberOfDems,
-  senateStats.numberOfReps,
-  senateStats.numberOfInds
-]);
-// calling membersLeastLoyal to change 'statisticReported' for 'Number of Party Votes' since it has 
-// to be calculated separately 
-correctNumberPartyVotes(senateStats.membersLeastLoyal)
-
-// calling tenPctCharts() to fill membersLeastLoyal with the correct information
 if (document.getElementById("leastLoyal")) {
-document.getElementById("leastLoyal").innerHTML = createTenPctTable(senateStats.membersLeastLoyal);
+  document.getElementById("leastLoyal").innerHTML = `<tr><td colspan="3"><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div></td></tr>`
 }
+
+// getting the data dynamically/asychronously using AJAX
+fetch(url, {
+  method: "get",
+  headers: {
+    "X-API-Key" : "9PxBtcchx3OZS4CHGYPU8VD0nG68lNGgic8kiU73"
+  }
+}).then(response => {
+  if (response.status !== 200) {
+    console.log("Looks like there was an issue. Status is "+ response.status);
+    return;
+  } 
+  response.json().then(data => {
+    console.log("ProPublica Response is good!")
+    console.log(data.results[0].members)
+    // calling functions which will fill numberOfDems, numberOfReps, numberOfInds, repsVoteOnParty, 
+    // demsVoteOnParty, indsVoteOnParty with correct answer to be used in 'senate at a glance' table
+    numberOfMembersCalc(data.results[0].members);
+    votesWithPartyCalc(data.results[0].members);
+
+    // filling 'senate at a glance' table with correct numbers from senateStats
+    document.getElementById("repNum").innerHTML = senateStats.numberOfReps;
+    document.getElementById("repPct").innerHTML = ` ${
+      senateStats.repsVoteOnParty
+    } %`;
+    document.getElementById("demNum").innerHTML = senateStats.numberOfDems
+    document.getElementById("demPct").innerHTML = ` ${
+      senateStats.demsVoteOnParty
+    } %`;
+    document.getElementById("indNum").innerHTML = senateStats.numberOfInds;
+    document.getElementById("indPct").innerHTML = ` ${
+      senateStats.indsVoteOnParty
+    } %`;
+
+
+    //--------------- Attendance Page ---------------//
+
+    // calling tenPctCharts() to fill membersMostEngaged with the correct information
+    senateStats.membersMostEngaged = tenPctCharts(sortByStatistic(data.results[0].members, "missed_votes", "missed_votes_pct"), [
+      senateStats.numberOfDems,
+      senateStats.numberOfReps,
+      senateStats.numberOfInds
+    ]);
+
+    // filling 'Most Engaged (Top 10% Attendance)' table with membersMostEngaged statistic and createTenPctTable() function
+    if (document.getElementById("mostEngaged")) {
+    document.getElementById("mostEngaged").innerHTML = createTenPctTable(senateStats.membersMostEngaged);
+    }
+
+    // calling tenPctCharts() to fill membersLeastEngaged with the correct information
+    // Note -- this one uses reversed list
+    senateStats.membersLeastEngaged = tenPctCharts((sortByStatistic(data.results[0].members, "missed_votes", "missed_votes_pct")).reverse(), [
+      senateStats.numberOfDems,
+      senateStats.numberOfReps,
+      senateStats.numberOfInds
+    ]);
+
+    // filling 'Least Engaged (Bottom 10% Attendance)' table with membersLeastEngaged statistic and createTenPctTable() function
+    if (document.getElementById("leastEngaged")) {
+    document.getElementById("leastEngaged").innerHTML = createTenPctTable(senateStats.membersLeastEngaged);
+    }
+
+
+    //--------------- Loyalty Page ---------------//
+
+
+    // calling tenPctCharts() to fill membersMostLoyal with the correct information
+    // Note -- this one uses reversed list
+    senateStats.membersMostLoyal = tenPctCharts((sortByStatistic(data.results[0].members, "total_votes", "votes_with_party_pct")).reverse(), [
+      senateStats.numberOfDems,
+      senateStats.numberOfReps,
+      senateStats.numberOfInds
+    ]);
+    // calling correctNumberPartyVotes to change 'statisticReported' for 'Number of Party Votes' since it has 
+    // to be calculated separately 
+    correctNumberPartyVotes(senateStats.membersMostLoyal)
+
+    // filling 'Most Loyal (Top 10% )' table with membersMostLoyal statistic and createTenPctTable() function
+    if (document.getElementById("mostLoyal")) {
+    document.getElementById("mostLoyal").innerHTML = createTenPctTable(senateStats.membersMostLoyal);
+    }
+
+    // calling tenPctCharts() to fill membersLeastLoyal with the correct information
+    senateStats.membersLeastLoyal = tenPctCharts(sortByStatistic(data.results[0].members, "total_votes", "votes_with_party_pct"), [
+      senateStats.numberOfDems,
+      senateStats.numberOfReps,
+      senateStats.numberOfInds
+    ]);
+    // calling membersLeastLoyal to change 'statisticReported' for 'Number of Party Votes' since it has 
+    // to be calculated separately 
+    correctNumberPartyVotes(senateStats.membersLeastLoyal)
+
+    // calling tenPctCharts() to fill membersLeastLoyal with the correct information
+    if (document.getElementById("leastLoyal")) {
+    document.getElementById("leastLoyal").innerHTML = createTenPctTable(senateStats.membersLeastLoyal);
+    }
+  })
+  .catch(err =>{
+    console.log("Fetch Error :-S", err)
+  })
+})
+
+
