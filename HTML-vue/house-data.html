@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <title id="title">TGIF House Data</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="../styles/TGIF.css">
+    </head>
+    
+    <body>
+        <header>
+            <img src="../LOGO.jpg" alt="Transparent Government in Fact Logo" id="logo">
+            <div id="mailUsLink">
+                <i class="fa fa-envelope-o"></i><a href="mailto:info@tgif.net">info@tgif.net</a>
+            </div>
+        </header>
+        
+
+       <nav class="navbar navbar-expand-sm container-fluid">
+            <ul class="nav navbar-nav" id=navWrapper>
+                <li><a class="nav-link" href="../HTML/index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-display="static">Congress 113</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../HTML/senate-data.html">Senate</a></li>
+                        <li><a href="../HTML/house-data.html">House</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Attendance</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../HTML/senate-attendance.html">Senate</a></li>
+                        <li><a href="../HTML/house-attendance.html">House</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Party Loyalty</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../HTML/senate-party-loyalty.html">Senate</a></li>
+                        <li><a href="../HTML/house-party-loyalty.html">House</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>    
+
+            <!--Table container-->
+
+        <div>
+            <div class="container-fluid houseText">
+            <h2>Congressmen</h2>
+            <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
+            <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
+            </div>   
+
+            <div class="row">
+                <span class="col-sm-2"></span>
+                <div class="container-fluid col-sm-8" id="filters">
+                <span>Filter results: </span>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkRep" checked>
+                    <label class="form-check-label" for="inlineCheckbox1">Republicans </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkDem" checked>
+                    <label class="form-check-label" for="inlineCheckbox2">Democrats</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkInd" checked>
+                    <label class="form-check-label" for="inlineCheckbox3">Independents</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkAll" checked>
+                    <label class="form-check-label" for="inlineCheckbox3">Select All</label>
+                    </div>
+                <div class="dropdown" id="dropdownwrap">
+                    <button class="btn dropdown-toggle btn-sm" type="button"  id="stateDropDownBtn" data-toggle="dropdown" value="All">
+                        State: All
+                    </button>
+                    <div class="dropdown-menu pre-scrollable" id="stateDropDown">
+                    </div>
+                </div>
+                </div>
+                <span class="col-sm-2"></span>
+            </div>
+            
+            <div class="row">
+                <span class="col-sm-2"></span>
+                <div class="container-fluid pre-scrollable col-sm-8" id="containerTableData">
+                    <table id="table" class="table">
+                    </table>
+                </div>
+                <span class="col-sm-2"></span>
+            </div>
+        </div>
+
+        <footer>
+            2016 TGIF | Rights Reserved
+        </footer> 
+        
+    <script type="text/javascript" src="../JS-vue/v-TGIF.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c9d6038217.js"></script>
+</body>
+</html>

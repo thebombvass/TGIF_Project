@@ -3,7 +3,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="utf-8">
-        <title id="title">TGIF Senate Party Loyalty</title>
+        <title id="title">TGIF Senate Attendance</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="../styles/TGIF.css">
     </head>
@@ -16,7 +16,7 @@
             </div>
         </header>
 
-       <nav class="navbar navbar-expand-sm container-fluid">
+        <nav class="navbar navbar-expand-sm container-fluid">
             <ul class="nav navbar-nav" id=navWrapper>
                 <li><a class="nav-link" href="../HTML/index.html">Home</a></li>
                 <li class="dropdown">
@@ -42,86 +42,87 @@
                 </li>
             </ul>
         </nav> 
-
+  
         <!--Table container-->
         <div class="container-fluid">
-        <div class="row"> 
-            <div class="col-sm-6">
-                <h2>Party Loyalty</h2>
-                <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
-            </div>
-            <div class="col-sm-6" id="atGlance">
-                <h2>Senate at a glance</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Party</th>
-                            <th>Number of Reps</th>
-                            <th>% Votes with Party</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Republican</td>
-                            <td id="repNum"><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div></td>
-                            <td id="repPct"></td>
-                        </tr>
-                        <tr>
-                            <td>Democrat</td>
-                            <td id="demNum"></td>
-                            <td id="demPct"></td>
-                        </tr>
-                        <tr>
-                            <td>Independent</td>
-                            <td id="indNum"></td>
-                            <td id="indPct"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <hr class=>
         <div class="row">
-            <div class="col-sm-6" id="leastLoyalTable">
-            <h2>Least Loyal (Bottom 10% of Party)</h2>
+            <div class="col-sm-6">
+            <h2>Attendance</h2>
+            <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
+            <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+            </div>
+
+            <div class="col-sm-6" id="atGlance">
+            <h2>Senate at a glance</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Party</th>
+                        <th>Number of Reps</th>
+                        <th>% Votes with Party</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Republican</td>
+                        <td id="repNum" class="centeredCol"><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div></td>
+                        <td id="repPct" class="centeredCol"></td>
+                    </tr>
+                    <tr>
+                        <td>Democrat</td>
+                        <td id="demNum" class="centeredCol"></td>
+                        <td id="demPct" class="centeredCol"></td>
+                    </tr>
+                    <tr>
+                        <td>Independent</td>
+                        <td id="indNum" class="centeredCol"></td>
+                        <td id="indPct" class="centeredCol"></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-6" id="leastEngagedTable">
+            <h2>Least Engaged (Bottom 10% Attendance)</h2>
             <table class="table">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Number Party Votes</th>
-                        <th>% Party Votes</th>
+                        <th>Number of Missed Votes</th>
+                        <th>% Missed</th>
                     </tr>
                 </thead>
-                <tbody id="leastLoyal">
+                <tbody id="leastEngaged">
                 </tbody>
             </table>
             </div>
 
-            <div class="col-sm-6" id="mostLoyalTable">
-            <h2>Most Loyal (Top 10% of Party)</h2>
+            <div class="col-sm-6" id="mostEngagedTable">
+            <h2>Most Engaged (Top 10% Attendance)</h2>
             <table class="table">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Number Party Votes</th>
-                        <th>% Party Votes</th>
+                        <th>Number of Missed Votes</th>
+                        <th>% Missed</th>
                     </tr>
                 </thead>
-                <tbody id="mostLoyal">
+                <tbody id="mostEngaged">
                 </tbody>
             </table>
             </div>
         </div>
-        </div>
+        </div> 
         
         <footer>
             2016 TGIF | Rights Reserved
-        </footer>  
-    <script type="text/javascript" src="../JS/senate-stats-calculations.js"></script>
+        </footer> 
+    <script type="text/javascript" src="../JS-vue/v-senate-stats-calculations.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
     <script src="https://kit.fontawesome.com/c9d6038217.js"></script>
 </body>
 </html>

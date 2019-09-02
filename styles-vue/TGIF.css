@@ -1,0 +1,187 @@
+/* Stylesheet for TGIF stuff */
+
+
+/* ***** type level selectors ***** */
+nav {
+    background-color: rgb(219, 219, 219);
+    margin-bottom: 40px;
+}
+
+/* clicky stuff */
+a {
+    color: rgb(39, 39, 39);
+}
+
+a:hover {
+    color: rgb(39, 39, 39);
+}
+
+ul {
+    list-style-type: none;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+header a {
+    color: rgb(0, 115, 209);
+}
+
+footer {
+    width: 100%;
+    background-color:rgb(219, 219, 219);
+    margin-top: 20px;
+    color:rgb(39, 39, 39);
+    text-align: center;
+    height: 50px;
+}
+
+/* ***** class level selectors ***** */
+.pre-scrollable {
+    max-height: 600px;
+}
+.dropdown-menu {
+    position: relative;
+    top: 38px;
+    display: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index:1;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.dropdown-menu li {
+    margin-top: 8px;
+}
+
+.centeredCol {
+    text-align: center;
+}
+
+.btn-text.collapsed:before {
+    content: 'read more ▼';
+    color: #004ecc;
+}
+
+.btn-text:before {
+    content: '';
+}
+
+/* ***** id level selectors ***** */
+
+
+/*Styling the Header, Logo, and Nav*/
+#navWrapper {
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#logo {
+    width: 40%;
+    margin: 10px;
+}
+
+#mailUsLink {
+    align-self:flex-end;
+}
+
+#mailUsLink a {
+    margin: 10px; 
+}
+
+/*Styling the Home page*/
+#aboutUs {
+    display: flex;
+    width: 100%;
+}
+
+#aboutUs div {
+    width: 60%;
+}
+
+#aboutUs img {
+    width: 30%;
+    height: auto;
+    align-self: flex-start;
+    min-width: 200px;
+}
+
+#readLess {
+    color: #004ecc;
+}
+
+/*Styling the Senate Data*/
+
+#containerTableData {
+    margin-top: 10px;
+}
+
+#containerTableData th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
+    position: sticky; 
+    top: 0;
+}
+
+#containerTableData td {
+    background-color: white;
+}
+
+#filters {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+#dropdownwrap {
+    display: inline;
+}
+
+#emptyMessage {
+    text-align: center;
+    color:  #b9443c;
+    font-size: 1.2em;
+}
+
+/*Styling the Senate at a Glance Table*/
+
+#atGlance h2{
+    text-align: right;
+}
+
+#atGlance{
+    align-self: center;
+}
+
+#atGlance th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
+}
+
+#leastEngagedTable th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
+}
+
+#mostEngagedTable th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
+}
+
+#mostLoyalTable th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
+}
+
+#leastLoyalTable th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
+}
