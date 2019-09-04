@@ -22,8 +22,9 @@ header {
     justify-content: space-between;
 }
 
-header a {
+a {
     color: rgb(0, 115, 209);
+    margin: 10px;
 }
 
 #logo {
@@ -33,9 +34,5 @@ header a {
 
 #mailUsLink {
     align-self:flex-end;
-}
-
-#mailUsLink a {
-    margin: 10px; 
 }
 </style>
