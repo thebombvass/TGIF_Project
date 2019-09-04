@@ -2,23 +2,48 @@
   <div id="app">
     <appHeader />
     <appNavBar />
+     <pageHome />
+    <appFooter />
   </div>
 </template>
 
 <script>
 import appHeader from './components/layout/header.vue'
 import appNavBar from './components/layout/navbar.vue'
+import appFooter from './components/layout/footer.vue'
+import pageHome from './components/home'
 
 export default {
   name: 'app',
   components: {
     appHeader,
-    appNavBar
+    appNavBar,
+    appFooter,
+    pageHome,
   }
 }
 </script>
 
 <style>
+/* clicky stuff */
+a {
+    color: rgb(39, 39, 39);
+}
+
+a:hover {
+    color: rgb(39, 39, 39);
+}
+
+ul {
+    list-style-type: none;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+/* class selectors */
+
 .pre-scrollable {
     max-height: 600px;
 }
