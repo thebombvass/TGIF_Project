@@ -1,6 +1,11 @@
 <template>
     <div>
+    <header>
     <img src="../../assets/logo.jpg" alt="Transparent Government in Fact Logo" id="logo">
+    <div id="mailUsLink">
+        <i class="fa fa-envelope-o"></i><a href="mailto:info@tgif.net">info@tgif.net</a>
+    </div>
+    </header>
     </div>
 </template>
 
@@ -11,5 +16,26 @@ export default {
 </script>
 
 <style scoped>
+header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
 
+header a {
+    color: rgb(0, 115, 209);
+}
+
+#logo {
+    width: 40%;
+    margin: 10px;
+}
+
+#mailUsLink {
+    align-self:flex-end;
+}
+
+#mailUsLink a {
+    margin: 10px; 
+}
 </style>
