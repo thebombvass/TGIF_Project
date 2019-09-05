@@ -1,17 +1,24 @@
 <template>
   <div id="app">
     <appHeader />
-    <appNavBar />
-     <pageHome />
-    <appFooter />
+    <appNavBar 
+    v-on:nav-home.capture="swapComponent"
+    v-on:nav-dataSenate.capture="swapComponent" />
+    <component 
+      :is="currentComponent"
+    ></component>
+    <!--<pageBasicData />-->
+    <!--<pageHome />-->
+    <appFooter/>
   </div>
 </template>
 
 <script>
-import appHeader from './components/layout/header.vue'
-import appNavBar from './components/layout/navbar.vue'
-import appFooter from './components/layout/footer.vue'
-import pageHome from './components/home'
+import appHeader from './components/header.vue'
+import appNavBar from './components/navbar.vue'
+import appFooter from './components/footer.vue'
+import pageHome from './components/home.vue'
+import pageBasicData from './components/basicData.vue'
 
 export default {
   name: 'app',
@@ -20,6 +27,19 @@ export default {
     appNavBar,
     appFooter,
     pageHome,
+    pageBasicData,
+  }, data() {
+    return {
+    currentComponent: 'pageHome',
+    }
+  }, methods: {
+    swapComponent: function(component) {
+      this.currentComponent = component;
+      console.log(this.currentComponent)
+    },
+    help : function() {
+      console.log('i need somebody HELP')
+    }
   }
 }
 </script>

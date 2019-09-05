@@ -2,11 +2,11 @@
     <div>
         <nav class="navbar navbar-expand-sm container-fluid">
             <ul class="nav navbar-nav" id=navWrapper>
-                <li><a class="nav-link" href="../HTML/index.html">Home</a></li>
+                <li @click="$emit('nav-home', 'pageHome')"><a href="#">Home</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-display="static">Congress 113</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Senate</a></li>
+                        <li @click="$emit('nav-dataSenate', 'pageBasicData')" ><a href="#">Senate</a></li>
                         <li><a href="#">House</a></li>
                     </ul>
                 </li>
@@ -32,6 +32,11 @@
 <script>
 export default {
     name: 'appNavBar',
+    methods: {
+        check: function() {
+            console.log("helooo")
+        }
+    }
 }
 </script>
 

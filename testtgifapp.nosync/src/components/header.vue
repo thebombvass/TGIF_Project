@@ -1,7 +1,7 @@
 <template>
     <div>
     <header>
-    <img src="../../assets/logo.jpg" alt="Transparent Government in Fact Logo" id="logo">
+    <img src="../assets/logo.jpg" alt="Transparent Government in Fact Logo" id="logo">
     <div id="mailUsLink">
         <i class="fa fa-envelope-o"></i><a href="mailto:info@tgif.net">info@tgif.net</a>
     </div>
