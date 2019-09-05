@@ -3,9 +3,12 @@
     <appHeader />
     <appNavBar 
     v-on:nav-home.capture="swapComponent"
-    v-on:nav-dataSenate.capture="swapComponent" />
+    v-on:nav-data.capture="swapComponent" 
+    v-on:nav-stats.capture="swapComponent"/>
     <component 
       :is="currentComponent"
+      v-bind:chamber="chamber"
+      v-bind:paragraph="paragraph"
     ></component>
     <!--<pageBasicData />-->
     <!--<pageHome />-->
@@ -19,6 +22,7 @@ import appNavBar from './components/navbar.vue'
 import appFooter from './components/footer.vue'
 import pageHome from './components/home.vue'
 import pageBasicData from './components/basicData.vue'
+import pageStatistics from './components/statistics.vue'
 
 export default {
   name: 'app',
@@ -28,18 +32,19 @@ export default {
     appFooter,
     pageHome,
     pageBasicData,
+    pageStatistics,
   }, data() {
     return {
     currentComponent: 'pageHome',
+    chamber: 0,
+    paragraph: 0
     }
   }, methods: {
-    swapComponent: function(component) {
-      this.currentComponent = component;
-      console.log(this.currentComponent)
+    swapComponent: function(array) {
+      this.currentComponent = array[0];
+      this.chamber = array[1];
+      this.paragraph = array[2]
     },
-    help : function() {
-      console.log('i need somebody HELP')
-    }
   }
 }
 </script>
