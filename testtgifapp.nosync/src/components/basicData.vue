@@ -9,17 +9,70 @@
             <h2>Congressmen</h2>
             <p>The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
             <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
-        </div>  
+        </div>
+
+        <appFetch 
+            v-bind:url="chamberToURL(chamber)" 
+            :key="chamber"
+            v-on:data-response.capture="check"
+        />
+
+        <div class="row">
+            <span class="col-sm-2"></span>
+            <div class="container-fluid pre-scrollable col-sm-8" id="containerTableData">
+                <table id="table" class="table"></table>
+            </div>
+            <span class="col-sm-2"></span>
+        </div>
     </div>
 </template>
 
 <script>
+import appFetch from './fetchData.vue'
+
 export default {
     name: 'pageBasicData',
-    props: ['chamber']
+    components: {
+        appFetch,
+    },
+    props: ['chamber'], 
+    data() {
+        return {
+            data: []
+        }
+    },
+    methods: { 
+        chamberToURL: function(chamber) {
+            if (chamber == 0) {
+                return 'https://api.propublica.org/congress/v1/113/senate/members.json'
+            } else if (chamber == 1) {
+                return 'https://api.propublica.org/congress/v1/113/house/members.json'
+            }
+        },
+        check: function() {
+            console.log("checked!")
+        },
+        dataInTable: function() {
+        console.log("mounted")
+        },
+    },
 }
 </script>
 
 <style scoped>
+#containerTableData {
+    margin-top: 10px;
+}
+
+th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
+    position: sticky; 
+    top: 0;
+}
+
+td {
+    background-color: white;
+}
 
 </style>
