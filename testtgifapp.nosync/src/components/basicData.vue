@@ -14,13 +14,32 @@
         <appFetch 
             v-bind:url="chamberToURL(chamber)" 
             :key="chamber"
-            v-on:data-response.capture="check"
+            v-on:data-response.capture="dataInTable"
         />
 
         <div class="row">
             <span class="col-sm-2"></span>
             <div class="container-fluid pre-scrollable col-sm-8" id="containerTableData">
-                <table id="table" class="table"></table>
+                <table id="table" class="table">
+                    <thead>
+                        <th> First Name </th>
+                        <th> Middle Name </th>
+                        <th> Last Name </th>
+                        <th> Party </th>
+                        <th> State </th>
+                        <th> Percentage of Votes with Party</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(element, index) in data" :key="index" :class="element.party">
+                            <td>{{element.first_name}}</td>
+                            <td>{{element.middle_name}}</td>
+                            <td>{{element.last_name}}</td>
+                            <td>{{element.party}}</td>
+                            <td>{{element.state}}</td>
+                            <td class="centeredCol">{{element.votes_with_party_pct}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <span class="col-sm-2"></span>
         </div>
@@ -52,8 +71,9 @@ export default {
         check: function() {
             console.log("checked!")
         },
-        dataInTable: function() {
-        console.log("mounted")
+        dataInTable: function(data) {
+            this.data = data;
+            console.log(this.data)
         },
     },
 }
@@ -73,6 +93,10 @@ th {
 
 td {
     background-color: white;
+}
+
+.centeredCol {
+    text-align: center;
 }
 
 </style>

@@ -11,6 +11,7 @@
                 <h2>Party Loyalty</h2>
                 <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
             </div>
+            <appAtGlance v-bind:chamber="chamber" />
         </div>
         </div>
 
@@ -18,8 +19,13 @@
 </template>
 
 <script>
+import appAtGlance from './atGlance.vue'
+
 export default {
     name: 'pageStatistics',
+    components: {
+        appAtGlance
+    },
     props: ["chamber", "paragraph"],
 }
 </script>

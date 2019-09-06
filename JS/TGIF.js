@@ -20,7 +20,7 @@ function dataInTable(data) {
         : data[i].party == "D"
         ? "Democrat"
         : "Independent"
-    }</td><td> ${data[i].state} </td><td class=centeredCol> ${
+    }</td><td> ${data[i].state} </td><td class="centeredCol"> ${
       data[i].votes_with_party_pct
     } %</td></tr>`;
     result += resultnext;
