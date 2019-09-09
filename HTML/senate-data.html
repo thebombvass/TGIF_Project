@@ -9,39 +9,35 @@
     </head>
     
     <body>
-        <header>
-            <img src="../LOGO.jpg" alt="Transparent Government in Fact Logo" id="logo">
-            <div id="mailUsLink">
-                <i class="fa fa-envelope-o"></i><a href="mailto:info@tgif.net">info@tgif.net</a>
-            </div>
+        <header class="row">
+            <img src="../LOGO.jpg" alt="Transparent Government in Fact Logo" id="logo" class="col-sm-5">
+            <nav class="navbar navbar-expand-sm col-sm-7">
+                <ul class="nav navbar-nav" id=navWrapper>
+                    <li><a class="nav-link" href="../HTML/index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-display="static">Congress 113</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../HTML/senate-data.html">Senate</a></li>
+                            <li><a href="../HTML/house-data.html">House</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Attendance</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../HTML/senate-attendance.html">Senate</a></li>
+                            <li><a href="../HTML/house-attendance.html">House</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Party Loyalty</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../HTML/senate-party-loyalty.html">Senate</a></li>
+                            <li><a href="../HTML/house-party-loyalty.html">House</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </header>
-        
-       <nav class="navbar navbar-expand-sm container-fluid">
-            <ul class="nav navbar-nav" id=navWrapper>
-                <li><a class="nav-link" href="../HTML/index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-display="static">Congress 113</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="../HTML/senate-data.html">Senate</a></li>
-                        <li><a href="../HTML/house-data.html">House</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Attendance</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="../HTML/senate-attendance.html">Senate</a></li>
-                        <li><a href="../HTML/house-attendance.html">House</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Party Loyalty</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="../HTML/senate-party-loyalty.html">Senate</a></li>
-                        <li><a href="../HTML/house-party-loyalty.html">House</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav> 
 
         <!--Table container-->
 
@@ -92,7 +88,7 @@
         </div>
 
         <footer>
-            2016 TGIF | Rights Reserved
+            <span class="footerWords">2016 TGIF | Rights Reserved</span>
         </footer>
         
     <script type="text/javascript" src="../JS/TGIF.js"></script>

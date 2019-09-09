@@ -1,11 +1,7 @@
 /* Stylesheet for TGIF stuff */
 
 
-/* ***** type level selectors ***** */
-nav {
-    background-color: rgb(219, 219, 219);
-    margin-bottom: 40px;
-}
+/* ***** type level selectors ***** * */
 
 /* clicky stuff */
 a {
@@ -22,24 +18,20 @@ ul {
 
 h2 {
     margin-bottom: 20px;
+    margin-top: 70px;
 }
 
-header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
-header a {
+footer a {
     color: rgb(0, 115, 209);
 }
 
 footer {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    background-color:rgb(219, 219, 219);
-    margin-top: 20px;
+    background-color:rgb(206, 205, 205);
+    margin-top: 70px;
     color:rgb(39, 39, 39);
-    text-align: center;
     height: 50px;
 }
 
@@ -74,54 +66,60 @@ footer {
     content: '';
 }
 
+.footerWords {
+    margin: 10px;
+}
+
+.clairOverlay a {
+    position: relative;
+    bottom: 30px;
+}
+
 /* ***** id level selectors ***** */
 
 
 /*Styling the Header, Logo, and Nav*/
 #navWrapper {
     display: flex;
-    width: 50%;
+    width: 100%;
     justify-content: space-around;
     align-items: center;
-}
-
-#logo {
-    width: 40%;
-    margin: 10px;
-}
-
-#mailUsLink {
-    align-self:flex-end;
-}
-
-#mailUsLink a {
-    margin: 10px; 
+    border-bottom: 2px solid #d6574e;;
 }
 
 /*Styling the Home page*/
-#aboutUs {
-    display: flex;
+#courthouse {
     width: 100%;
-}
-
-#aboutUs div {
-    width: 60%;
-}
-
-#aboutUs img {
-    width: 30%;
-    height: auto;
-    align-self: flex-start;
-    min-width: 200px;
 }
 
 #readLess {
     color: #004ecc;
 }
 
+#aboutUsTxt {
+    display: inline;
+}
+
+#aboutUsImg {
+    width: 40%;
+    max-width: 400px;
+    float: right;
+}
+
+#bgHistoryWrap {
+    margin: 30px;
+    width: 40%;
+    max-width: 500px;
+    float: left;
+}
+
+#bgHistoryImg {
+    width: 100%;
+}
+
 /*Styling the Senate Data*/
 
-#containerTableData 
+#containerTableData {
     margin-top: 10px;
 }
 
