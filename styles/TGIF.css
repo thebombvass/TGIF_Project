@@ -30,9 +30,18 @@ footer {
     justify-content: space-between;
     width: 100%;
     background-color:rgb(206, 205, 205);
-    margin-top: 70px;
     color:rgb(39, 39, 39);
     height: 50px;
+}
+
+
+th {
+    background-color: #b9443c;
+    color: rgb(238, 237, 237);
+}
+
+td {
+    background-color: white;
 }
 
 /* ***** class level selectors ***** */
@@ -119,8 +128,19 @@ footer {
 
 /*Styling the Senate Data*/
 
+.dataInfo {
+    background-image: url('../capitolbuilding.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.backgroundFade {
+    background: -webkit-linear-gradient(bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 95%,rgba(255,255,255,1) 100%);
+}
+
 #containerTableData {
     margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 #containerTableData th {
@@ -151,35 +171,71 @@ footer {
 
 /*Styling the Senate at a Glance Table*/
 
-#atGlance h2{
-    text-align: right;
+
+#atGlanceWrap {
+    display: flex;
+    justify-content: center;
 }
 
 #atGlance{
+    background-color: white;
     align-self: center;
+    width: 80%;
+    border: 2px solid #0031b6;
+    border-radius: 5px;
+    box-shadow: 10px 10px 15px grey;
+}
+
+#atGlance h2 {
+    margin: 10px;
+}
+
+#atGlance table {
+    width: 90%;
+    margin: 10px;
 }
 
 #atGlance th {
     background-color: #b9443c;
+    border-bottom:  #b9443c;
     color: rgb(238, 237, 237);
 }
 
-#leastEngagedTable th {
-    background-color: #b9443c;
-    color: rgb(238, 237, 237);
+#attendanceText {
+    margin-bottom: 100px;
 }
 
-#mostEngagedTable th {
-    background-color: #b9443c;
-    color: rgb(238, 237, 237);
+/* **** styling the attendance page ****/
+
+#votedImage {
+    background-image: url(../ivoted.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-#mostLoyalTable th {
-    background-color: #b9443c;
-    color: rgb(238, 237, 237);
+.votedFade {
+    background: -webkit-linear-gradient(right bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 95%,rgba(255,255,255,1) 100%);
 }
 
-#leastLoyalTable th {
+.mostLeastTables {
+    margin: 20px;
+    margin-bottom: 100px;
+}
+
+.mostLeastTables th {
     background-color: #b9443c;
     color: rgb(238, 237, 237);
+    position: sticky; 
+    top: 0;
+}
+
+/* **** styling the party loyalty page ****/
+#flagImage {
+    background-image: url(../americanflag.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.flagFade {
+    background: -webkit-linear-gradient(bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 95%,rgba(255,255,255,1) 100%);
 }

@@ -95,7 +95,7 @@ function tenPctCharts(sortedArray, arrayToSum) {
   }
   // makese sure that anyone tied with the last value in top/bottom 10% is included
   while (true) {
-    if (
+    if ( 
       sortedArray[topten.length - 1]["statisticSorted"]===
       sortedArray[topten.length]["statisticSorted"]
     ) {

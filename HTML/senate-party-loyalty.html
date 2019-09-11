@@ -41,74 +41,87 @@
 
         <!--Table container-->
         <div class="container-fluid">
-        <div class="row"> 
-            <div class="col-sm-6">
-                <h2>Party Loyalty</h2>
-                <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
+        <div class="row">
+            <div class="col-md-6">
+            <div class="mostLeastTables">
+        <h2>Party Loyalty</h2>
+        <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
+        <img src="../repanddem.jpg" alt="elephant and donkey graphic">
+        </div>
+        </div>
+
+        <div class="col-md-6" id="atGlanceWrap">
+            <div class="container-fluid" id="atGlance">
+            <h2>At a Glance</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Party</th>
+                        <th>Number of Reps</th>
+                        <th>% Votes with Party</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Republican</td>
+                        <td id="repNum" class="centeredCol"><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div></td>
+                        <td id="repPct" class="centeredCol"></td>
+                    </tr>
+                    <tr>
+                        <td>Democrat</td>
+                        <td id="demNum" class="centeredCol"></td>
+                        <td id="demPct" class="centeredCol"></td>
+                    </tr>
+                    <tr>
+                        <td>Independent</td>
+                        <td id="indNum" class="centeredCol"></td>
+                        <td id="indPct" class="centeredCol"></td>
+                    </tr>
+                </tbody>
+            </table>
             </div>
-            <div class="col-sm-6" id="atGlance">
-                <h2>Senate at a glance</h2>
+            </div>
+            </div>
+    
+            <div id="flagImage">
+            <div class="flagFade">
+            <div class="row">
+            <div class="col-md-6">
+                <div class="mostLeastTables">
+                <h2>Least Loyal (Bottom 10% of Party)</h2>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Party</th>
-                            <th>Number of Reps</th>
-                            <th>% Votes with Party</th>
+                            <th>Name</th>
+                            <th>Number Party Votes</th>
+                            <th>% Party Votes</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Republican</td>
-                            <td id="repNum"><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div></td>
-                            <td id="repPct"></td>
-                        </tr>
-                        <tr>
-                            <td>Democrat</td>
-                            <td id="demNum"></td>
-                            <td id="demPct"></td>
-                        </tr>
-                        <tr>
-                            <td>Independent</td>
-                            <td id="indNum"></td>
-                            <td id="indPct"></td>
-                        </tr>
+                    <tbody id="leastLoyal">
                     </tbody>
                 </table>
+                </div>
             </div>
-        </div>
-
-        <hr class=>
-        <div class="row">
-            <div class="col-sm-6" id="leastLoyalTable">
-            <h2>Least Loyal (Bottom 10% of Party)</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Number Party Votes</th>
-                        <th>% Party Votes</th>
-                    </tr>
-                </thead>
-                <tbody id="leastLoyal">
-                </tbody>
-            </table>
+    
+            <div class="col-md-6">
+                <div class="mostLeastTables">
+                <h2>Most Loyal (Top 10% of Party)</h2>
+                <table class="table">                
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Number Party Votes</th>
+                            <th>% Party Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mostLoyal">
+                    </tbody>
+                </table>
+                </div>
+            </div> 
             </div>
-
-            <div class="col-sm-6" id="mostLoyalTable">
-            <h2>Most Loyal (Top 10% of Party)</h2>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Number Party Votes</th>
-                        <th>% Party Votes</th>
-                    </tr>
-                </thead>
-                <tbody id="mostLoyal">
-                </tbody>
-            </table>
             </div>
-        </div>
+            </div>
         </div>
         
         <footer>
